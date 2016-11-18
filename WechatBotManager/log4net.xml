@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration> 
+  <configSections>
+    <section name="log4net" type="log4net.Config.Log4NetConfigurationSectionHandler, log4net-net-1.0"    />
+  </configSections> 
+  <log4net>
+    <logger name="System">
+      <level value="ALL"/>
+      <appender-ref ref="DailyAppender" />
+    </logger>
+    <logger name="Info">
+      <level value="ALL"/>
+      <appender-ref ref="LoginAppender" />
+    </logger>
+    <appender name="DailyAppender" type="log4net.Appender.RollingFileAppender,log4net" >
+      <param name="File" value="Logs/" />
+      <param name="AppendToFile" value="true" />
+      <param name="RollingStyle" value="Date" />
+      <param name="DatePattern" value="yyyyMM/dd/&quot;System.log&quot;" />
+      <param name="StaticLogFileName" value="false" />
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%newline%date [%thread] %-5level %logger [%property{NDC}] - %message%newline" />
+      </layout>
+     
+    </appender>
+    <appender name="LoginAppender" type="log4net.Appender.RollingFileAppender,log4net" >
+      <param name="File" value="Logs/" />
+      <param name="AppendToFile" value="true" />
+      <param name="RollingStyle" value="Date" />
+      <param name="DatePattern" value="yyyyMM/dd/&quot;Info.log&quot;" />
+      <param name="StaticLogFileName" value="false" />
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%newline%date [%thread] %-5level %logger [%property{NDC}] - %message%newline" />
+      </layout>
+    </appender>
+  </log4net>
+
+</configuration>
